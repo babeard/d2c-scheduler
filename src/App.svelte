@@ -161,80 +161,93 @@
               </div>
             </div>
           {:else if page === 2}
-            <div class="w-full py-10 px-5" in:fly={{ x: 200 * pageDirection }}>
-              <h2 class="font-medium text-gray-500 mb-1">
-                Enter your information
-              </h2>
-              <div class="text-gray-800 text-xl font-medium select-none mb-8">
-                Personal data
+            <div class="w-full overflow-hidden">
+              <div
+                class="w-full py-10 px-5"
+                in:fly={{ x: 200 * pageDirection }}>
+                <h2 class="font-medium text-gray-500 mb-1">
+                  Enter your information
+                </h2>
+                <div class="text-gray-800 text-xl font-medium select-none mb-8">
+                  Personal data
+                </div>
+
+                <label class="mb-6">
+                  Your Name
+                  <div
+                    class="mt-1 w-4/5 rounded-lg border border-gray-400 p-2 flex">
+                    <input
+                      bind:value={name}
+                      class="pl-3 flex-1 border-none bg-transparent"
+                      type="text"
+                      placeholder="Please enter your full name" />
+                    {#if nameValid}
+                      <span
+                        class="h-8 w-8 block p-1 flex justify-center
+                        items-center bg-green-100 text-green-500 rounded-full"
+                        in:scale={{ start: 0.5 }}>
+                        <CheckAnimated
+                          delay="100"
+                          strokeWidth="3"
+                          size="18px" />
+                      </span>
+                    {:else}
+                      <span class="h-8" />
+                    {/if}
+                  </div>
+                </label>
+
+                <label class="mb-6">
+                  Your work e-mail address
+                  <div
+                    class="mt-1 w-4/5 rounded-lg border border-gray-400 p-2 flex">
+                    <input
+                      bind:value={email}
+                      class="pl-3 flex-1 border-none bg-transparent"
+                      type="email"
+                      placeholder="Please enter your e-mail address" />
+                    {#if emailValid}
+                      <span
+                        class="h-8 w-8 block p-1 flex justify-center
+                        items-center bg-green-100 text-green-500 rounded-full"
+                        in:scale={{ start: 0.5 }}>
+                        <CheckAnimated
+                          delay="100"
+                          strokeWidth="3"
+                          size="18px" />
+                      </span>
+                    {:else}
+                      <span class="h-8" />
+                    {/if}
+                  </div>
+                </label>
+
+                <label>
+                  Phone number
+                  <div
+                    class="mt-1 w-4/5 rounded-lg border border-gray-400 p-2 flex">
+                    <input
+                      bind:value={phone}
+                      class="pl-3 flex-1 border-none bg-transparent"
+                      type="text"
+                      placeholder="Please enter phone number" />
+                    {#if phoneValid}
+                      <span
+                        class="h-8 w-8 block p-1 flex justify-center
+                        items-center bg-green-100 text-green-500 rounded-full"
+                        in:scale={{ start: 0.5 }}>
+                        <CheckAnimated
+                          delay="100"
+                          strokeWidth="3"
+                          size="18px" />
+                      </span>
+                    {:else}
+                      <span class="h-8" />
+                    {/if}
+                  </div>
+                </label>
+
               </div>
-
-              <label class="mb-6">
-                Your Name
-                <div
-                  class="mt-1 w-4/5 rounded-lg border border-gray-400 p-2 flex">
-                  <input
-                    bind:value={name}
-                    class="pl-3 flex-1 border-none bg-transparent"
-                    type="text"
-                    placeholder="Please enter your full name" />
-                  {#if nameValid}
-                    <span
-                      class="h-8 w-8 block p-1 flex justify-center items-center
-                      bg-green-100 text-green-500 rounded-full"
-                      in:scale={{ start: 0.5 }}>
-                      <CheckAnimated delay="100" strokeWidth="3" size="18px" />
-                    </span>
-                  {:else}
-                    <span class="h-8" />
-                  {/if}
-                </div>
-              </label>
-
-              <label class="mb-6">
-                Your work e-mail address
-                <div
-                  class="mt-1 w-4/5 rounded-lg border border-gray-400 p-2 flex">
-                  <input
-                    bind:value={email}
-                    class="pl-3 flex-1 border-none bg-transparent"
-                    type="email"
-                    placeholder="Please enter your e-mail address" />
-                  {#if emailValid}
-                    <span
-                      class="h-8 w-8 block p-1 flex justify-center items-center
-                      bg-green-100 text-green-500 rounded-full"
-                      in:scale={{ start: 0.5 }}>
-                      <CheckAnimated delay="100" strokeWidth="3" size="18px" />
-                    </span>
-                  {:else}
-                    <span class="h-8" />
-                  {/if}
-                </div>
-              </label>
-
-              <label>
-                Phone number
-                <div
-                  class="mt-1 w-4/5 rounded-lg border border-gray-400 p-2 flex">
-                  <input
-                    bind:value={phone}
-                    class="pl-3 flex-1 border-none bg-transparent"
-                    type="text"
-                    placeholder="Please enter phone number" />
-                  {#if phoneValid}
-                    <span
-                      class="h-8 w-8 block p-1 flex justify-center items-center
-                      bg-green-100 text-green-500 rounded-full"
-                      in:scale={{ start: 0.5 }}>
-                      <CheckAnimated delay="100" strokeWidth="3" size="18px" />
-                    </span>
-                  {:else}
-                    <span class="h-8" />
-                  {/if}
-                </div>
-              </label>
-
             </div>
           {/if}
         </div>
