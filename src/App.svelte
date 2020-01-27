@@ -187,7 +187,8 @@
                         items-center bg-green-100 text-green-500 rounded-full"
                         in:scale={{ start: 0.5 }}>
                         <CheckAnimated
-                          delay="100"
+                          delay={200}
+                          speed={0.5}
                           strokeWidth="3"
                           size="18px" />
                       </span>
@@ -212,7 +213,8 @@
                         items-center bg-green-100 text-green-500 rounded-full"
                         in:scale={{ start: 0.5 }}>
                         <CheckAnimated
-                          delay="100"
+                          delay={200}
+                          speed={0.5}
                           strokeWidth="3"
                           size="18px" />
                       </span>
@@ -237,7 +239,8 @@
                         items-center bg-green-100 text-green-500 rounded-full"
                         in:scale={{ start: 0.5 }}>
                         <CheckAnimated
-                          delay="100"
+                          delay={200}
+                          speed={0.5}
                           strokeWidth="3"
                           size="18px" />
                       </span>
@@ -256,7 +259,7 @@
           class="w-full py-5 px-5 flex justify-between items-center border-t
           border-gray-200">
           <button
-            class=" font-medium py-2 px-8 rounded-md border-none {page !== 1 ? 'bg-blue-100 text-blue-500' : 'bg-gray-100 text-blue-300'}"
+            class="font-medium py-2 px-8 rounded-md border-none {page !== 1 ? 'bg-blue-100 text-blue-500' : 'bg-gray-100 text-blue-300'}"
             on:click={() => changePage(page - 1)}>
             &larr; Back
           </button>
@@ -288,7 +291,7 @@
         class="bg-blue-200 text-blue-600 p-3 inline-flex justify-center
         items-center rounded-full"
         in:scale|local={{ start: 0.5, delay: 200 }}>
-        <CheckAnimated delay="400" size="40px" strokeWidth="3" />
+        <CheckAnimated delay={400} size="40px" strokeWidth="3" />
       </div>
 
       <h1 class="mt-5">We just scheduled a demo for you!</h1>
@@ -369,6 +372,10 @@
     animation-name: dip;
     animation-duration: 0.3s;
     animation-timing-function: ease-out;
+  }
+
+  input {
+    outline:none;
   }
 
   @keyframes dip {
