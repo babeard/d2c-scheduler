@@ -71,19 +71,18 @@
 <Tailwindcss />
 
 <div
-  class="flex justify-center bg-gray-100 items-center"
+  class="flex justify-center p-3 bg-gray-100 items-center"
   style="min-height: 100vh;">
   {#if page !== 3}
     <main
       class="max-w-screen-lg w-full bg-white rounded-lg shadow-lg flex flex-col">
 
       <div>
-        <div class="w-full flex" style="min-height: 515px;">
+        <div class="page-1-2-parent w-full flex flex-col md:flex-row">
 
           <aside
-            class="w-full flex flex-col justify-between pt-10 pb-5 px-5 border-r
-            border-gray-200"
-            style="max-width: 325px;">
+            class="w-full flex flex-row md:flex-col justify-between pt-10 pb-10
+            md:pb-5 px-5 border-b md:border-b-0 md:border-r border-gray-200">
             <div>
               <h3>Walkthrough</h3>
 
@@ -98,7 +97,9 @@
             </div>
 
             {#if selectedDate}
-              <div class="bg-gray-100 px-5 py-6 rounded-lg" in:fly={{ y: 20 }}>
+              <div
+                class="hidden md:block bg-gray-100 px-5 py-6 rounded-lg"
+                in:fly={{ y: 20 }}>
                 <h5>Date</h5>
                 <span class="font-bold">
                   {new Intl.DateTimeFormat('en-US', {
@@ -131,7 +132,7 @@
           {#if page === 1}
             <div class="overflow-hidden w-full">
               <div
-                class="w-full flex"
+                class="w-full flex flex-col md:flex-row"
                 in:fly|local={{ x: 200 * pageDirection }}>
                 <section class="flex-1 py-10 px-5">
                   <h2 class="font-semibold text-gray-500 mb-1">
@@ -140,11 +141,10 @@
                   <Calendar bind:selected={selectedDateT} />
                 </section>
 
-                <div class="pt-32 pr-5">
+                <div class="md:pt-32 md:pr-5">
                   <section
-                    class="flex flex-col px-5 overflow-y-scroll"
-                    style="min-width: 200px; max-height: 385px; scrollbar-color:
-                    #cbd5e0 transparent;scrollbar-width: thin;">
+                    class="select-time flex flex-col px-5 overflow-y-scroll"
+                    style="">
                     {#each times as time, i}
                       <div
                         class="cursor-pointer transition-colors duration-200
@@ -175,7 +175,7 @@
                 <label class="mb-6">
                   Your Name
                   <div
-                    class="mt-1 w-4/5 rounded-lg border border-gray-400 p-2 flex">
+                    class="mt-1 md:w-4/5 rounded-lg border border-gray-400 p-2 flex">
                     <input
                       bind:value={name}
                       class="pl-3 flex-1 border-none bg-transparent"
@@ -201,7 +201,7 @@
                 <label class="mb-6">
                   Your work e-mail address
                   <div
-                    class="mt-1 w-4/5 rounded-lg border border-gray-400 p-2 flex">
+                    class="mt-1 md:w-4/5 rounded-lg border border-gray-400 p-2 flex">
                     <input
                       bind:value={email}
                       class="pl-3 flex-1 border-none bg-transparent"
@@ -227,7 +227,7 @@
                 <label>
                   Phone number
                   <div
-                    class="mt-1 w-4/5 rounded-lg border border-gray-400 p-2 flex">
+                    class="mt-1 md:w-4/5 rounded-lg border border-gray-400 p-2 flex">
                     <input
                       bind:value={phone}
                       class="pl-3 flex-1 border-none bg-transparent"
@@ -259,20 +259,20 @@
           class="w-full py-5 px-5 flex justify-between items-center border-t
           border-gray-200">
           <button
-            class="font-medium py-2 px-8 rounded-md border-none {page !== 1 ? 'bg-blue-100 text-blue-500' : 'bg-gray-100 text-blue-300'}"
+            class="font-medium py-2 px-5 md:px-8 rounded-md border-none {page !== 1 ? 'bg-blue-100 text-blue-500' : 'bg-gray-100 text-blue-300'}"
             on:click={() => changePage(page - 1)}>
             &larr; Back
           </button>
 
           {#if page === 1}
             <button
-              class="next-btn font-medium py-2 px-8 rounded-md border-none {page1Valid ? 'valid bg-blue-500 text-white' : 'bg-blue-300 text-blue-100'}"
+              class="next-btn font-medium py-2 px-5 md:px-8 rounded-md border-none {page1Valid ? 'valid bg-blue-500 text-white' : 'bg-blue-300 text-blue-100'}"
               on:click={() => changePage(page + 1)}>
               Next Step
             </button>
           {:else if page === 2}
             <button
-              class="next-btn font-medium py-2 px-8 rounded-md border-none {page2Valid ? 'bg-blue-500 text-white' : 'bg-blue-300 text-blue-100'}"
+              class="next-btn font-medium py-2 px-5 md:px-8 rounded-md border-none {page2Valid ? 'bg-blue-500 text-white' : 'bg-blue-300 text-blue-100'}"
               on:click={() => changePage(page + 1)}>
               Schedule demo
             </button>
@@ -285,16 +285,16 @@
   {:else}
     <main
       class=" max-w-screen-lg w-full shadow-lg flex flex-col justify-center
-      items-center my-10 py-10 bg-white rounded-lg"
+      items-center my-10 py-10 bg-white rounded-lg px-5 md:px-0"
       in:scale|local={{ start: 1.5 }}>
       <div
         class="bg-blue-200 text-blue-600 p-3 inline-flex justify-center
-        items-center rounded-full"
+        items-center rounded-full mb-10 md:mb-0"
         in:scale|local={{ start: 0.5, delay: 200 }}>
         <CheckAnimated delay={400} size="40px" strokeWidth="3" />
       </div>
 
-      <h1 class="mt-5">We just scheduled a demo for you!</h1>
+      <h1 class="mt-5 text-center md:text-left">We just scheduled a demo for you!</h1>
 
       <div class="mt-3 text-center text-gray-500" style="max-width: 500px;">
         A calendar invitation for your upcoming demo session has been sent to
@@ -303,8 +303,8 @@
       </div>
 
       <div
-        class="mt-10 bg-gray-100 px-5 py-6 rounded-lg w-full flex
-        justify-between items-center"
+        class="mt-10 bg-gray-100 px-5 py-6 rounded-lg w-full flex flex-col md:flex-row
+        justify-between md:items-center"
         style="max-width: 450px;">
         <div class="flex-1">
           <h5>Date</h5>
@@ -318,7 +318,7 @@
 
         </div>
 
-        <div class="flex-1">
+        <div class="flex-1 mt-5 md:mt-0">
           <h5>Time</h5>
           {#if selectedTime}
             <span class="inline-block font-bold">
@@ -375,7 +375,7 @@
   }
 
   input {
-    outline:none;
+    outline: none;
   }
 
   @keyframes dip {
@@ -389,6 +389,37 @@
 
     100% {
       transform: scale(1);
+    }
+  }
+
+  aside {
+    @apply w-full;
+  }
+
+  .select-time {
+      max-height: 200px;
+      scrollbar-color: #cbd5e0 transparent;
+      scrollbar-width: thin;
+    }
+
+  .page-1-2-parent {
+    min-height: auto;
+  }
+
+  @screen md {
+    .page-1-2-parent {
+      min-height: 515px;
+    }
+
+    .select-time {
+      min-width: 200px;
+      max-height: 385px;
+      scrollbar-color: #cbd5e0 transparent;
+      scrollbar-width: thin;
+    }
+
+    aside {
+      max-width: 325px;
     }
   }
 </style>

@@ -89,14 +89,14 @@
   <!-- Month Switcher -->
   <section class="flex justify-between items-center">
 
-    <div class="month w-1/2">
+    <div class="month w-2/3 md:w-1/2">
       {selectedMonth.toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long'
       })}
     </div>
 
-    <nav class="flex w-1/2 justify-end">
+    <nav class="flex w-1/3 md:w-1/2 justify-end">
       <button
         class="icon mr-3 border-none"
         class:disabled={backMonthDisabled}
@@ -138,9 +138,13 @@
 <style>
   .month {
     @apply text-gray-800;
-    @apply text-2xl;
+    @apply text-xl;
     @apply font-medium;
     @apply select-none;
+  }
+
+  @screen md {
+    @apply text-2xl;
   }
 
   nav .icon {
