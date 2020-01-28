@@ -175,7 +175,8 @@
                 <label class="mb-6">
                   Your Name
                   <div
-                    class="mt-1 md:w-4/5 rounded-lg border border-gray-400 p-2 flex">
+                    class="mt-1 md:w-4/5 rounded-lg border border-gray-400 p-2
+                    flex">
                     <input
                       bind:value={name}
                       class="pl-3 flex-1 border-none bg-transparent"
@@ -201,7 +202,8 @@
                 <label class="mb-6">
                   Your work e-mail address
                   <div
-                    class="mt-1 md:w-4/5 rounded-lg border border-gray-400 p-2 flex">
+                    class="mt-1 md:w-4/5 rounded-lg border border-gray-400 p-2
+                    flex">
                     <input
                       bind:value={email}
                       class="pl-3 flex-1 border-none bg-transparent"
@@ -227,7 +229,8 @@
                 <label>
                   Phone number
                   <div
-                    class="mt-1 md:w-4/5 rounded-lg border border-gray-400 p-2 flex">
+                    class="mt-1 md:w-4/5 rounded-lg border border-gray-400 p-2
+                    flex">
                     <input
                       bind:value={phone}
                       class="pl-3 flex-1 border-none bg-transparent"
@@ -266,13 +269,15 @@
 
           {#if page === 1}
             <button
-              class="next-btn font-medium py-2 px-5 md:px-8 rounded-md border-none {page1Valid ? 'valid bg-blue-500 text-white' : 'bg-blue-300 text-blue-100'}"
+              class="next-btn font-medium py-2 px-5 md:px-8 rounded-md
+              border-none {page1Valid ? 'valid bg-blue-500 text-white' : 'bg-blue-300 text-blue-100'}"
               on:click={() => changePage(page + 1)}>
               Next Step
             </button>
           {:else if page === 2}
             <button
-              class="next-btn font-medium py-2 px-5 md:px-8 rounded-md border-none {page2Valid ? 'bg-blue-500 text-white' : 'bg-blue-300 text-blue-100'}"
+              class="next-btn font-medium py-2 px-5 md:px-8 rounded-md
+              border-none {page2Valid ? 'bg-blue-500 text-white' : 'bg-blue-300 text-blue-100'}"
               on:click={() => changePage(page + 1)}>
               Schedule demo
             </button>
@@ -284,9 +289,8 @@
     </main>
   {:else}
     <main
-      class=" max-w-screen-lg w-full shadow-lg flex flex-col justify-center
-      items-center my-10 py-10 bg-white rounded-lg px-5 md:px-0"
-      in:scale|local={{ start: 1.5 }}>
+      class="page-3 max-w-screen-lg w-full shadow-lg flex flex-col
+      justify-center items-center my-10 py-10 bg-white rounded-lg px-5 md:px-0">
       <div
         class="bg-blue-200 text-blue-600 p-3 inline-flex justify-center
         items-center rounded-full mb-10 md:mb-0"
@@ -294,7 +298,9 @@
         <CheckAnimated delay={400} size="40px" strokeWidth="3" />
       </div>
 
-      <h1 class="mt-5 text-center md:text-left">We just scheduled a demo for you!</h1>
+      <h1 class="mt-5 text-center md:text-left">
+        We just scheduled a demo for you!
+      </h1>
 
       <div class="mt-3 text-center text-gray-500" style="max-width: 500px;">
         A calendar invitation for your upcoming demo session has been sent to
@@ -303,8 +309,8 @@
       </div>
 
       <div
-        class="mt-10 bg-gray-100 px-5 py-6 rounded-lg w-full flex flex-col md:flex-row
-        justify-between md:items-center"
+        class="mt-10 bg-gray-100 px-5 py-6 rounded-lg w-full flex flex-col
+        md:flex-row justify-between md:items-center"
         style="max-width: 450px;">
         <div class="flex-1">
           <h5>Date</h5>
@@ -378,6 +384,47 @@
     outline: none;
   }
 
+  aside {
+    @apply w-full;
+  }
+
+  .select-time {
+    max-height: 200px;
+    scrollbar-color: #cbd5e0 transparent;
+    scrollbar-width: thin;
+  }
+
+  .page-1-2-parent {
+    min-height: auto;
+  }
+
+  .page-3 {
+    animation-name: scale-up;
+    animation-duration: 0.4s;
+    animation-timing-function: ease-out;
+  }
+
+  @screen md {
+    .page-1-2-parent {
+      min-height: 515px;
+    }
+
+    .page-3 {
+      animation-name: scale-down;
+    }
+
+    .select-time {
+      min-width: 200px;
+      max-height: 385px;
+      scrollbar-color: #cbd5e0 transparent;
+      scrollbar-width: thin;
+    }
+
+    aside {
+      max-width: 325px;
+    }
+  }
+
   @keyframes dip {
     0% {
       transform: scale(1);
@@ -392,34 +439,23 @@
     }
   }
 
-  aside {
-    @apply w-full;
+  @keyframes scale-down {
+    0% {
+      transform: scale(1.5);
+    }
+
+    100% {
+      transform: scale(1);
+    }
   }
 
-  .select-time {
-      max-height: 200px;
-      scrollbar-color: #cbd5e0 transparent;
-      scrollbar-width: thin;
+  @keyframes scale-up {
+    0% {
+      transform: scale(0.7);
     }
 
-  .page-1-2-parent {
-    min-height: auto;
-  }
-
-  @screen md {
-    .page-1-2-parent {
-      min-height: 515px;
-    }
-
-    .select-time {
-      min-width: 200px;
-      max-height: 385px;
-      scrollbar-color: #cbd5e0 transparent;
-      scrollbar-width: thin;
-    }
-
-    aside {
-      max-width: 325px;
+    100% {
+      transform: scale(1);
     }
   }
 </style>
