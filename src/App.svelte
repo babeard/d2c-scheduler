@@ -29,10 +29,11 @@
     { disabled: false, time: "17:00" },
     { disabled: false, time: "17:30" }
   ];
-  let selectedDateT;
+  let selectedDateSerialized;
   let selectedTimeIdx;
 
-  $: selectedDate = (selectedDateT && new Date(selectedDateT)) || null;
+  $: selectedDate =
+    (selectedDateSerialized && new Date(selectedDateSerialized)) || null;
   $: hasSelectedTime = selectedTimeIdx !== null && selectedTimeIdx >= 0;
   $: selectedTime = hasSelectedTime ? times[selectedTimeIdx].time : null;
 
@@ -138,7 +139,7 @@
                   <h2 class="font-semibold text-gray-500 mb-1">
                     Select a Date & Time
                   </h2>
-                  <Calendar bind:selected={selectedDateT} />
+                  <Calendar bind:selected={selectedDateSerialized} />
                 </section>
 
                 <div class="md:pt-32 md:pr-5">

@@ -1,14 +1,9 @@
 <script>
-  import { createEventDispatcher } from "svelte";
-
   import Icon from "./svg/Icon.svelte";
   import chevronleftsvg from "./svg/icons/chevron.left.svg";
   import chevronrightsvg from "./svg/icons/chevron.right.svg";
 
-  const dispatch = createEventDispatcher();
-
   export let maxMonths = 2;
-
   export let selected = null;
 
   $: selectedDay = (selected && new Date(selected)) || null;
@@ -55,8 +50,9 @@
   };
   const selectDay = d => {
     const day = d === selectedDay ? null : d;
-    // dispatch("select", day);
-    // selectedDay = day;
+
+    // We must serialize our selected date
+    // to get transitions right in the parent
     selected = day.getTime();
   };
   const changeMonth = direction => {
@@ -143,10 +139,6 @@
     @apply select-none;
   }
 
-  @screen md {
-    @apply text-2xl;
-  }
-
   nav .icon {
     @apply bg-blue-100;
     @apply rounded-md;
@@ -205,9 +197,6 @@
     @apply text-blue-500;
     @apply font-semibold;
   }
-  /* .selected span.today {
-    @apply bg-indigo-500;  
-  } */
 
   main div.disabled span {
     @apply cursor-default;
